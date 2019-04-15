@@ -4,6 +4,7 @@ import Boid from './boid.js'
 import { WIDTH, HEIGHT } from './constants.js'
 
 const flock = []
+const BOIDS_PER_CLICK = 1
 
 // setInterval(() => flock.push(createBoid()), 1000)
 
@@ -29,14 +30,16 @@ function animate(time) {
 
 canvas.onclick = (e) => {
   const { offsetX: x, offsetY: y } = e
-    flock.push(
-      new Boid(
-        ctx,
-        new Vec2(x, y),
-        new Vec2(0,0),
-        new Vec2(0, 0)
+    for( let i = 0; i < BOIDS_PER_CLICK; i++) {
+      flock.push(
+        new Boid(
+          ctx,
+          new Vec2(x, y),
+          new Vec2(0,0),
+          new Vec2(0, 0)
+        )
       )
-    )
+    }
 }
 
 function createBoid() {
