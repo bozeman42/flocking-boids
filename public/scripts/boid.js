@@ -10,13 +10,14 @@ class Boid {
   draw() {
     const { ctx } = this
     const [ x, y ] = this.position.coords
-    const [ vx, vy ] = this.velocity.direction(10)
+    const [ vx, vy ] = this.velocity.coords
     const [ ax, ay ] = this.acceleration.coords
     ctx.beginPath()
     ctx.arc(x, y, 10, 0, Math.PI * 2)
     ctx.moveTo(x,y)
-    ctx.lineTo(x + vx, y + vy)
-    ctx.lineTo(x + vx + ax * 10, y + vy + ay * 10)
+    const [vVecX, vVecY ] = [x + 10*vx, y + 10* vy]
+    ctx.lineTo(vVecX, vVecY)
+    ctx.lineTo(vVecX + ax * 10, vVecY + ay * 10)
     ctx.stroke()
   }
 
