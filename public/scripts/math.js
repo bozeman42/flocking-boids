@@ -32,6 +32,7 @@ export class Vec2 {
     const { cos, sin } = Math
     const rad = angle
     this.setVec(_x * cos(rad) - _y * sin(rad), _x * sin(rad) + _y * cos(rad))
+    return this
   }
 
   setVec (x, y) {
